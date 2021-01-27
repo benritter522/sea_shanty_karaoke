@@ -1,6 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 
 export default function Song() {
 
@@ -48,22 +48,18 @@ export default function Song() {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.buffer}></Text>
-            <View style={styles.appTitle}>
-                <Text>Sea Shanty Karaoke</Text>
-            </View>
             <View style={styles.songTitle}>
                 <Text>{song}</Text>
             </View>
-            <View style={styles.songLyrics}>
+            <ScrollView style={styles.songLyrics}> 
             {
                 lyrics.map((lyric, index) => {
                     return(
-                    <Text key={index}>{lyric}</Text>
+                        <Text key={index}>{lyric}</Text>
                     )
                 })
             }
-            </View>
+            </ScrollView>
             {/* <StatusBar style="auto" /> */}
         </View>
     )
@@ -71,31 +67,21 @@ export default function Song() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 3,
         backgroundColor: '#fff',
         margin: 25,
         // justifyContent: 'center',
         // alignItems: 'center',
     },
-    buffer: {
-        height: 25,
-        // backgroundColor: 'gray',
-    }, 
-    appTitle: {
-        flex: 1,
-        justifyContent: 'center',
-        // alignItems: 'center',
-    },
     songTitle: {
-        flex: 2,
+        // flex: 1,
         justifyContent: 'center',
         // backgroundColor: 'gray',
     },
     songLyrics: {
-        flex: 10,
+        // flex: 1,
         width: 300,
-        // height: 100,
-        alignSelf: 'center',
+        // alignSelf: 'center',
         backgroundColor: 'gray',
         // justifyContent: 'center',
         // alignItems: 'center',
