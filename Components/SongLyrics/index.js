@@ -1,9 +1,9 @@
-// import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, ScrollView, Text, View } from 'react-native';
+import React from 'react';
+import { View, Text, FlatList } from 'react-native';
 
-export default function Song() {
+import styles from './styles';
 
+const SongLyrics = () => {
     const fishInTheSeaLyrics = [
         "Come all you young sailor men, listen to me",
         "I'll sing you a song of the fish in the sea:",
@@ -38,53 +38,15 @@ export default function Song() {
         "Jolly sou'wester, boys, steady she goes",
     ]
     
-    const [song, setSong] = useState("");
-    const [lyrics, setLyrics] = useState([]);
-    
-    useEffect(() => {
-        setSong("Fish In The Sea");
-        setLyrics(fishInTheSeaLyrics);
-    }, []);
-
     return (
         <View style={styles.container}>
-            <View style={styles.songTitle}>
-                <Text>{song}</Text>
-            </View>
-            <ScrollView style={styles.songLyrics}> 
-            {
-                lyrics.map((lyric, index) => {
-                    return(
-                        <Text key={index}>{lyric}</Text>
-                    )
-                })
-            }
-            </ScrollView>
-            {/* <StatusBar style="auto" /> */}
+            <FlatList 
+                style={styles.songLyrics}
+                data={fishInTheSeaLyrics}
+                renderItem={({item}) => <Text>{item}</Text>}
+            />
         </View>
     )
-}
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 3,
-        backgroundColor: '#fff',
-        margin: 25,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-    },
-    songTitle: {
-        // flex: 1,
-        justifyContent: 'center',
-        // backgroundColor: 'gray',
-    },
-    songLyrics: {
-        // flex: 1,
-        width: 300,
-        // alignSelf: 'center',
-        backgroundColor: 'gray',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        // height: 50,
-    },
-})
+export default SongLyrics;
