@@ -4,8 +4,26 @@ import { View, Text } from 'react-native';
 import styles from './styles';
 import StyledButton from '../StyledButton';
 
-const SongControls = () => {
+const SongControls = (props) => {
+
+    const { currentLyric, setCurrentLyric, lyricsLength } = props;
     const diameter = 60;
+
+    const upLine = () => {
+        if(currentLyric <= 0) {
+            console.warn("First Lyric Already Highlighted");
+        } else {
+            setCurrentLyric(currentLyric - 1);
+        }
+    }
+
+    const downLine = () => {
+        if(currentLyric >= lyricsLength - 1) {
+            console.warn("Last Lyric Already Highlighted");
+        } else {
+            setCurrentLyric(currentLyric + 1);
+        }
+    }
     return (
         <View style={styles.container}>
             <View style={styles.progressBarContainer}>
@@ -13,22 +31,18 @@ const SongControls = () => {
             </View>
             <View style={styles.buttonContainer}>
                 <StyledButton 
-                    diameter={diameter}
                     content={"UP"}
-                    onPress={() => {
-                        console.warn("UP was pressed");
-                    }} 
+                    diameter={diameter}
+                    onPress={() => upLine()}
                 />
                 <StyledButton 
-                    diameter={diameter}
                     content={"DN"}
-                    onPress={() => {
-                        console.warn("DN was pressed");
-                    }} 
+                    diameter={diameter}
+                    onPress={() => downLine()} 
                 />
                 <StyledButton 
-                    diameter={diameter}
                     content={"P"}
+                    diameter={diameter}
                     onPress={() => {
                         console.warn("P was pressed");
                     }} 

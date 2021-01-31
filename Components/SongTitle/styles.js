@@ -4,8 +4,8 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         paddingTop: 75,
-        paddingLeft: 15,
-        paddingBottom: 10,
+        paddingLeft: 20,
+        paddingBottom: 5,
     },
     songTitle: {
         fontSize: 20

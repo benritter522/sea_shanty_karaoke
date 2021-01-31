@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonContainer: {
+        height: '50%',
         flexDirection: 'column',
         justifyContent: 'space-around',
     },

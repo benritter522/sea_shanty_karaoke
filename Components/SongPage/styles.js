@@ -4,11 +4,12 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: 'lightblue',
+        // backgroundColor: 'lightblue',
         alignItems: 'center',
+        zIndex: 0,
     },
     lyricsAndControls: {
-        height: '75%',
+        height: '80%',
         width: '95%',
         flexDirection: 'row',
         justifyContent: 'space-around'
