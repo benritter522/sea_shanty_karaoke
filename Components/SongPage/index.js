@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View } from 'react-native';
 
 import SongTitle from '../SongTitle';
 import SongLyrics from '../SongLyrics';
@@ -7,11 +7,14 @@ import SongControls from '../SongControls';
 import styles from './styles';
 
 const SongPage = () => {
+
     return (
         <View style={styles.container}>
             <SongTitle />
-            <SongLyrics />
-            <SongControls />
+            <View style={styles.lyricsAndControls}>
+                <SongLyrics />
+                <SongControls />
+            </View>
         </View>
     );
 };
