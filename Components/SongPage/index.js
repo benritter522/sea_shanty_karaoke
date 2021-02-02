@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
+// import { Audio } from 'expo-av'; //expo install expo-keep-awake to keep screen on, then npx pod-install for ios config
 
 import SongTitle from '../SongTitle';
 import SongLyrics from '../SongLyrics';
@@ -40,9 +41,6 @@ const SongPage = () => {
         "Blow ye winds westerly, blow ye winds, blow",
         "Jolly sou'wester, boys, steady she goes",
     ]
-    // for (let i = 0; i < fishInTheSeaLyrics.length; i++) {
-    //     fishInTheSeaLyrics[i].id = i;
-    // }
 
     const [currentLyric, setCurrentLyric] = useState(0);
     const [lyricsLength] = useState(fishInTheSeaLyrics.length);
@@ -52,7 +50,7 @@ const SongPage = () => {
     }, [])
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container} >
             <SongTitle />
             <View style={styles.lyricsAndControls}>
                 <SongLyrics 

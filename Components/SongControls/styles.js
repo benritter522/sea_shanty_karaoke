@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
     progressBarContainer: {
         height: '100%',
-        width: 10,
+        width: 5,
         backgroundColor: 'gray',
         alignItems: 'center',
     },

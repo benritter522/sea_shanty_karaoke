@@ -12,10 +12,10 @@ const SongLyrics = (props) => {
             <FlatList 
                 style={styles.songLyrics}
                 data={lyrics}
+                showsVerticalScrollIndicator={true}
                 keyExtractor={(item, index) => index}
                 renderItem={({item, index}) => {
                     const backgroundColor = index === currentLyric ? 'yellow' : 'transparent';
-                    // console.log(index);
                     return(
                         <Text
                             style={{ backgroundColor }}
