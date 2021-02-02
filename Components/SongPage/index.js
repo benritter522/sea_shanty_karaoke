@@ -50,7 +50,7 @@ const SongPage = () => {
     }, [])
 
     return (
-        <View style={styles.container} >
+        <View style={styles.container}>
             <SongTitle />
             <View style={styles.lyricsAndControls}>
                 <SongLyrics 

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -13,6 +13,14 @@ const styles = StyleSheet.create({
         width: '95%',
         flexDirection: 'row',
         justifyContent: 'space-around'
+    },
+    image: {
+        height: '103%',
+        width: Dimensions.get('window').width,
+        // resizeMode: 'cover',
+        position: 'absolute',
+        left: 0,
+        bottom: 0,
     },
 });
 

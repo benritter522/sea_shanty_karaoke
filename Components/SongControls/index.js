@@ -9,12 +9,20 @@ import StyledButton from '../StyledButton';
 const SongControls = (props) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [playbackInstance, setPlaybackInstance] = useState(null);
-    // const [currentIndex, setCurrentIndex] = useState(0); // ALREADY COVERED W/ CURRENTLYRIC??
+    // const [currentIndex, setCurrentIndex] = useState(0); // For a playlist
     const [volume, setVolume] = useState(1.0);
     const [isBuffering, setIsBuffering] = useState(false);
+    const [positionMillis, setPositionMillis] = useState(0);
 
     const { currentLyric, setCurrentLyric, lyricsLength } = props;
     const diameter = 60;
+
+    // const unloadAudio = async () => {
+    //     // adding this to the useEffect to prevent multiple instances playing at once
+    //     if (playbackInstance) {
+    //         await playbackInstance.unloadAsyc();
+    //     }
+    // }
 
     const componentDidMount = async () => {
         try { 
@@ -39,10 +47,12 @@ const SongControls = (props) => {
             const source = require('./Fish.mp3'); // { uri: audioBookPlaylist[currentIndex].uri }
             const status = {
                 shouldPlay: isPlaying,
-                volume
+                volume,
+                positionMillis
             }
             playbackInstance.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
             await playbackInstance.loadAsync(source, status, false);
+            // console.log("playback duration", playbackInstance.status)
             setPlaybackInstance(playbackInstance); //can I share this variable name with a state variable?
         } catch (err) {
             console.log(err);
@@ -50,6 +60,7 @@ const SongControls = (props) => {
     }
     const onPlaybackStatusUpdate = (status) => {
         setIsBuffering(status.isBuffering)
+        setPositionMillis(status.positionMillis)
     }
 
     const handlePlayPause = async () => {
@@ -73,10 +84,28 @@ const SongControls = (props) => {
         }
         // scrollTo({x: 0, y: 5, animated: true})
     }
+    const timestamp = () => {
+        console.log("timestamp button pressed")
+        // console.log("playback position: ", playbackInstance.getStatusAsync());
+        // console.log("playback position: ", playbackInstance.getStatusAsync({ positionMillis }));
+
+        // playbackInstance.setPositionAsync(10000); // THIS WORKS!!!
+        // playbackInstance.setStatusAsync({ positionMillis: 10000 }); // THIS WORKS!!!
+
+        console.log("playback position: ", positionMillis);
+
+    }
+
 
     useEffect(() => {
+        // unloadAudio();
         componentDidMount();
     }, [])
+
+    // useEffect(() => {
+    //     // setPositionMillis()
+    // })
+
     return (
         <View style={styles.container}>
             <View style={styles.progressBarContainer}>
@@ -105,6 +134,11 @@ const SongControls = (props) => {
                     onPress={() => {
                         handlePlayPause();
                     }} 
+                />
+                <StyledButton 
+                    content={"T"}
+                    diameter={diameter}
+                    onPress={() => timestamp()} 
                 />
                     
             </View>
