@@ -69,6 +69,7 @@ const SongControls = (props) => {
 
 
     const upLine = () => {
+        playbackInstance.setPositionAsync(lyrics[currentLyric - 1].timestamp); // THIS WORKS!!!
         if(currentLyric <= 0) {
             console.warn("First Lyric Already Highlighted");
         } else {
@@ -76,6 +77,7 @@ const SongControls = (props) => {
         }
     }
     const downLine = () => {
+        playbackInstance.setPositionAsync(lyrics[currentLyric + 1].timestamp); // THIS WORKS!!!
         if(currentLyric >= lyricsLength - 1) {
             console.warn("Last Lyric Already Highlighted");
         } else {
@@ -102,11 +104,14 @@ const SongControls = (props) => {
     useEffect(() => {
         // unloadAudio();
         componentDidMount();
+        setCurrentLyric(0);
     }, [])
 
-    // useEffect(() => {
-    //     // setPositionMillis()
-    // })
+    useEffect(() => {
+        if(currentLyric < lyricsLength - 1) {
+            if(positionMillis > lyrics[currentLyric + 1].timestamp) setCurrentLyric(currentLyric + 1)
+        }
+    }, [positionMillis])
 
     return (
         <View style={styles.container}>

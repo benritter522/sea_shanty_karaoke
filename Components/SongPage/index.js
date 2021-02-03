@@ -141,20 +141,17 @@ const SongPage = () => {
     useEffect(() => {
         setCurrentLyric(0);
     }, [])
-    console.log(lyrics)
     return (
         <View style={styles.container}>
             <SongTitle />
             <View style={styles.lyricsAndControls}>
                 <SongLyrics 
-                    lyrics={lyrics}
-                    setLyrics={setLyrics}
                     currentLyric={currentLyric}
+                    lyrics={lyrics} setLyrics={setLyrics}
                 />
                 <SongControls 
-                    lyrics={lyrics}
-                    setLyrics={setLyrics}
                     lyricsLength={lyricsLength}
+                    lyrics={lyrics} setLyrics={setLyrics}
                     currentLyric={currentLyric} setCurrentLyric={setCurrentLyric}
                 />
             </View>
