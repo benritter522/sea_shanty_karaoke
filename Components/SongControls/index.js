@@ -69,18 +69,18 @@ const SongControls = (props) => {
 
 
     const upLine = () => {
-        playbackInstance.setPositionAsync(lyrics[currentLyric - 1].timestamp); // THIS WORKS!!!
         if(currentLyric <= 0) {
             console.warn("First Lyric Already Highlighted");
         } else {
+            playbackInstance.setPositionAsync(lyrics[currentLyric - 1].timestamp); // THIS WORKS!!!
             setCurrentLyric(currentLyric - 1);
         }
     }
     const downLine = () => {
-        playbackInstance.setPositionAsync(lyrics[currentLyric + 1].timestamp); // THIS WORKS!!!
         if(currentLyric >= lyricsLength - 1) {
             console.warn("Last Lyric Already Highlighted");
         } else {
+            playbackInstance.setPositionAsync(lyrics[currentLyric + 1].timestamp); // THIS WORKS!!!
             setCurrentLyric(currentLyric + 1);
         }
         // scrollTo({x: 0, y: 5, animated: true})
