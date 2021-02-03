@@ -19,7 +19,7 @@ const SongLyrics = (props) => {
                     return(
                         <Text
                             style={{ backgroundColor }}
-                        >{item}</Text>
+                        >{item.text}</Text>
                     );
                 }}
             />

@@ -14,7 +14,7 @@ const SongControls = (props) => {
     const [isBuffering, setIsBuffering] = useState(false);
     const [positionMillis, setPositionMillis] = useState(0);
 
-    const { currentLyric, setCurrentLyric, lyricsLength } = props;
+    const { lyrics, setLyrics, currentLyric, setCurrentLyric, lyricsLength } = props;
     const diameter = 60;
 
     // const unloadAudio = async () => {
@@ -47,8 +47,7 @@ const SongControls = (props) => {
             const source = require('./Fish.mp3'); // { uri: audioBookPlaylist[currentIndex].uri }
             const status = {
                 shouldPlay: isPlaying,
-                volume,
-                positionMillis
+                volume            
             }
             playbackInstance.setOnPlaybackStatusUpdate(onPlaybackStatusUpdate);
             await playbackInstance.loadAsync(source, status, false);
@@ -86,14 +85,17 @@ const SongControls = (props) => {
     }
     const timestamp = () => {
         console.log("timestamp button pressed")
+        console.log("playback position: ", positionMillis);
+        lyrics[currentLyric].timestamp = positionMillis;
+        setLyrics(lyrics);
+        setCurrentLyric(currentLyric + 1);
+        console.log(lyrics);
+        console.log(currentLyric);
         // console.log("playback position: ", playbackInstance.getStatusAsync());
         // console.log("playback position: ", playbackInstance.getStatusAsync({ positionMillis }));
 
         // playbackInstance.setPositionAsync(10000); // THIS WORKS!!!
         // playbackInstance.setStatusAsync({ positionMillis: 10000 }); // THIS WORKS!!!
-
-        console.log("playback position: ", positionMillis);
-
     }
 
 
@@ -135,11 +137,7 @@ const SongControls = (props) => {
                         handlePlayPause();
                     }} 
                 />
-                <StyledButton 
-                    content={"T"}
-                    diameter={diameter}
-                    onPress={() => timestamp()} 
-                />
+                {/* <StyledButton content={"T"} diameter={diameter} onPress={() => timestamp()} /> */}
                     
             </View>
 
