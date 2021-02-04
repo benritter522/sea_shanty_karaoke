@@ -10,6 +10,12 @@ Stay tuned for instructions on downloading the app!
 
 Simply press the play button and learn to sing along! More songs coming soon.
 
+# Wireframes
+
+![alt text](https://res.cloudinary.com/bitingrent/image/upload/v1612462566/Projects/sskwireframe1_pmetxl.jpg)
+
+![alt text](https://res.cloudinary.com/bitingrent/image/upload/v1612462607/Projects/sskwireframe2_eho2iu.jpg)
+
 ## Design
 
 This app was made using React Native and Expo CLI. 
